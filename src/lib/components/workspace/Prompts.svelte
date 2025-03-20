@@ -148,12 +148,12 @@
 					<a href={`/workspace/prompts/edit?command=${encodeURIComponent(prompt.command)}`}>
 						<div class=" flex-1 flex items-center gap-2 self-center">
 							<div class=" font-semibold line-clamp-1 capitalize">{prompt.title}</div>
-							<div class=" text-xs overflow-hidden text-ellipsis line-clamp-1">
+							<div class=" overflow-hidden text-ellipsis line-clamp-1">
 								{prompt.command}
 							</div>
 						</div>
 
-						<div class=" text-xs px-0.5">
+						<div class=" px-0.5">
 							<Tooltip
 								content={prompt?.user?.email ?? $i18n.t('Deleted User')}
 								className="flex shrink-0"
@@ -262,7 +262,7 @@
 				/>
 
 				<button
-					class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
+					class="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
 					on:click={() => {
 						promptsImportInputElement.click();
 					}}
@@ -286,7 +286,7 @@
 				</button>
 
 				<button
-					class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
+					class="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
 					on:click={async () => {
 						// promptsImportInputElement.click();
 						let blob = new Blob([JSON.stringify(prompts)], {

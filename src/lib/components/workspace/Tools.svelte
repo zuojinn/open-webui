@@ -221,14 +221,14 @@
 							<Tooltip content={tool?.meta?.description ?? ''} placement="top-start">
 								<div class=" font-semibold flex items-center gap-1.5">
 									<div
-										class=" text-xs font-bold px-1 rounded-sm uppercase line-clamp-1 bg-gray-500/20 text-gray-700 dark:text-gray-200"
+										class=" font-bold px-1 rounded-sm uppercase line-clamp-1 bg-gray-500/20 text-gray-700 dark:text-gray-200"
 									>
 										TOOL
 									</div>
 
 									{#if tool?.meta?.manifest?.version}
 										<div
-											class="text-xs font-bold px-1 rounded-sm line-clamp-1 bg-gray-500/20 text-gray-700 dark:text-gray-200"
+											class=" font-bold px-1 rounded-sm line-clamp-1 bg-gray-500/20 text-gray-700 dark:text-gray-200"
 										>
 											v{tool?.meta?.manifest?.version ?? ''}
 										</div>
@@ -237,19 +237,19 @@
 									<div class="line-clamp-1">
 										{tool.name}
 
-										<span class=" text-gray-500 text-xs font-medium shrink-0">{tool.id}</span>
+										<span class=" text-gray-500 font-medium shrink-0">{tool.id}</span>
 									</div>
 								</div>
 							</Tooltip>
 
 							<div class="px-0.5">
 								<div class="flex gap-1.5 mt-0.5 mb-0.5">
-									<div class=" text-xs overflow-hidden text-ellipsis line-clamp-1">
+									<div class=" overflow-hidden text-ellipsis line-clamp-1">
 										{tool.meta.description}
 									</div>
 								</div>
 
-								<div class="text-xs text-gray-500 shrink-0">
+								<div class="text-gray-500 shrink-0">
 									<Tooltip
 										content={tool?.user?.email ?? $i18n.t('Deleted User')}
 										className="flex shrink-0"
@@ -375,7 +375,7 @@
 				/>
 
 				<button
-					class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
+					class="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
 					on:click={() => {
 						toolsImportInputElement.click();
 					}}
@@ -399,7 +399,7 @@
 				</button>
 
 				<button
-					class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
+					class="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
 					on:click={async () => {
 						const _tools = await exportTools(localStorage.token).catch((error) => {
 							toast.error(`${error}`);
@@ -503,7 +503,7 @@
 			<div class=" bg-yellow-500/20 text-yellow-700 dark:text-yellow-200 rounded-lg px-4 py-3">
 				<div>{$i18n.t('Please carefully review the following warnings:')}</div>
 
-				<ul class=" mt-1 list-disc pl-4 text-xs">
+				<ul class=" mt-1 list-disc pl-4 ">
 					<li>
 						{$i18n.t('Tools have a function calling system that allows arbitrary code execution')}.
 					</li>

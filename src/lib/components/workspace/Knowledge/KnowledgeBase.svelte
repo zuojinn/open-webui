@@ -660,7 +660,7 @@
 					<div class="flex w-full px-1">
 						<input
 							type="text"
-							class="text-left text-xs w-full text-gray-500 bg-transparent outline-hidden"
+							class="text-left  w-full text-gray-500 bg-transparent outline-hidden"
 							bind:value={knowledge.description}
 							placeholder="Knowledge Description"
 							on:input={() => {
@@ -728,7 +728,7 @@
 						</div>
 					{:else}
 						<div class="h-full flex w-full">
-							<div class="m-auto text-xs text-center text-gray-200 dark:text-gray-700">
+							<div class="m-auto  text-center text-gray-200 dark:text-gray-700">
 								{$i18n.t('Drag and drop a file to upload or select a file to view')}
 							</div>
 						</div>
@@ -845,7 +845,7 @@
 						</div>
 
 						{#if filteredItems.length > 0}
-							<div class=" flex overflow-y-auto h-full w-full scrollbar-hidden text-xs">
+							<div class=" flex overflow-y-auto h-full w-full scrollbar-hidden ">
 								<Files
 									small
 									files={filteredItems}
@@ -862,7 +862,7 @@
 								/>
 							</div>
 						{:else}
-							<div class="my-3 flex flex-col justify-center text-center text-gray-500 text-xs">
+							<div class="my-3 flex flex-col justify-center text-center text-gray-500">
 								<div>
 									{$i18n.t('No content found')}
 								</div>

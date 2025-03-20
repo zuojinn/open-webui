@@ -297,7 +297,7 @@ class Tools:
 
 				<div class="pb-3 flex justify-between">
 					<div class="flex-1 pr-3">
-						<div class="text-xs text-gray-500 line-clamp-2">
+						<div class=" text-gray-500 line-clamp-2">
 							<span class=" font-semibold dark:text-gray-200">{$i18n.t('Warning:')}</span>
 							{$i18n.t('Tools are a function calling system with arbitrary code execution')} <br />—
 							<span class=" font-medium dark:text-gray-400"
@@ -328,7 +328,7 @@ class Tools:
 		<div class=" bg-yellow-500/20 text-yellow-700 dark:text-yellow-200 rounded-lg px-4 py-3">
 			<div>{$i18n.t('Please carefully review the following warnings:')}</div>
 
-			<ul class=" mt-1 list-disc pl-4 text-xs">
+			<ul class=" mt-1 list-disc pl-4">
 				<li>
 					{$i18n.t('Tools have a function calling system that allows arbitrary code execution.')}
 				</li>

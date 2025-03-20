@@ -27,7 +27,7 @@
 		<div class=" self-center text-sm font-semibold">{$i18n.t('Filters')}</div>
 	</div>
 
-	<div class=" text-xs dark:text-gray-500">
+	<div class=" dark:text-gray-500">
 		{$i18n.t('To select filters here, add them to the "Functions" workspace first.')}
 	</div>
 

@@ -117,7 +117,7 @@
 					<option class=" text-gray-700" value="public" selected>{$i18n.t('Public')}</option>
 				</select>
 
-				<div class=" text-xs text-gray-400 font-medium">
+				<div class=" text-gray-400 font-medium">
 					{#if accessControl !== null}
 						{$i18n.t('Only select users and groups with permission can access')}
 					{:else}
@@ -177,7 +177,7 @@
 				<div class="flex flex-col gap-2 mb-1 px-0.5">
 					{#if accessGroups.length > 0}
 						{#each accessGroups as group}
-							<div class="flex items-center gap-3 justify-between text-xs w-full transition">
+							<div class="flex items-center gap-3 justify-between w-full transition">
 								<div class="flex items-center gap-1.5 w-full font-medium">
 									<div>
 										<UserCircleSolid className="size-4" />
@@ -230,7 +230,7 @@
 						{/each}
 					{:else}
 						<div class="flex items-center justify-center">
-							<div class="text-gray-500 text-xs text-center py-2 px-10">
+							<div class="text-gray-500 text-center py-2 px-10">
 								{$i18n.t('No groups with access, add a group to grant access')}
 							</div>
 						</div>

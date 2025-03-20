@@ -417,7 +417,7 @@
 
 						<div class="flex w-full mt-1 justify-end">
 							<button
-								class="px-2 py-1 text-gray-500 rounded-lg text-xs"
+								class="px-2 py-1 text-gray-500 rounded-lg "
 								on:click={() => {
 									info.meta.profile_image_url = '/static/favicon.png';
 								}}
@@ -445,7 +445,7 @@
 						<div class="flex-1">
 							<div>
 								<input
-									class="text-xs w-full bg-transparent text-gray-500 outline-hidden"
+									class=" w-full bg-transparent text-gray-500 outline-hidden"
 									placeholder={$i18n.t('Model ID')}
 									bind:value={id}
 									disabled={edit}
@@ -485,7 +485,7 @@
 							<div class=" self-center text-sm font-semibold">{$i18n.t('Description')}</div>
 
 							<button
-								class="p-1 text-xs flex rounded-sm transition"
+								class="p-1 flex rounded-sm transition"
 								type="button"
 								on:click={() => {
 									enableDescription = !enableDescription;
@@ -543,7 +543,7 @@
 
 						<div class="mt-2">
 							<div class="my-1">
-								<div class=" text-xs font-semibold mb-2">{$i18n.t('System Prompt')}</div>
+								<div class=" font-semibold mb-2">{$i18n.t('System Prompt')}</div>
 								<div>
 									<Textarea
 										className=" text-sm w-full bg-transparent outline-hidden resize-none overflow-y-hidden "
@@ -555,12 +555,12 @@
 							</div>
 
 							<div class="flex w-full justify-between">
-								<div class=" self-center text-xs font-semibold">
+								<div class=" self-center font-semibold">
 									{$i18n.t('Advanced Params')}
 								</div>
 
 								<button
-									class="p-1 px-3 text-xs flex rounded-sm transition"
+									class="p-1 px-3 flex rounded-sm transition"
 									type="button"
 									on:click={() => {
 										showAdvanced = !showAdvanced;
@@ -598,7 +598,7 @@
 								</div>
 
 								<button
-									class="p-1 text-xs flex rounded-sm transition"
+									class="p-1 flex rounded-sm transition"
 									type="button"
 									on:click={() => {
 										if ((info?.meta?.suggestion_prompts ?? null) === null) {
@@ -618,7 +618,7 @@
 
 							{#if (info?.meta?.suggestion_prompts ?? null) !== null}
 								<button
-									class="p-1 px-2 text-xs flex rounded-sm transition"
+									class="p-1 px-2  flex rounded-sm transition"
 									type="button"
 									on:click={() => {
 										if (
@@ -679,7 +679,7 @@
 										</div>
 									{/each}
 								{:else}
-									<div class="text-xs text-center">No suggestion prompts</div>
+									<div class=" text-center">No suggestion prompts</div>
 								{/if}
 							</div>
 						{/if}
@@ -718,7 +718,7 @@
 							<div class=" self-center text-sm font-semibold">{$i18n.t('JSON Preview')}</div>
 
 							<button
-								class="p-1 px-3 text-xs flex rounded-sm transition"
+								class="p-1 px-3 flex rounded-sm transition"
 								type="button"
 								on:click={() => {
 									showPreview = !showPreview;

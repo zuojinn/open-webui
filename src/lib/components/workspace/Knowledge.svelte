@@ -158,12 +158,12 @@
 					<div class=" self-center flex-1 px-1 mb-1">
 						<div class=" font-semibold line-clamp-1 h-fit">{item.name}</div>
 
-						<div class=" text-xs overflow-hidden text-ellipsis line-clamp-1">
+						<div class="  overflow-hidden text-ellipsis line-clamp-1">
 							{item.description}
 						</div>
 
 						<div class="mt-3 flex justify-between">
-							<div class="text-xs text-gray-500">
+							<div class=" text-gray-500">
 								<Tooltip
 									content={item?.user?.email ?? $i18n.t('Deleted User')}
 									className="flex shrink-0"
@@ -176,7 +176,7 @@
 									})}
 								</Tooltip>
 							</div>
-							<div class=" text-xs text-gray-500 line-clamp-1">
+							<div class=" text-gray-500 line-clamp-1">
 								{$i18n.t('Updated')}
 								{dayjs(item.updated_at * 1000).fromNow()}
 							</div>
@@ -187,7 +187,7 @@
 		{/each}
 	</div>
 
-	<div class=" text-gray-500 text-xs mt-1 mb-2">
+	<div class=" text-gray-500 mt-1 mb-2">
 		ⓘ {$i18n.t("Use '#' in the prompt input to load and include your knowledge.")}
 	</div>
 {:else}
