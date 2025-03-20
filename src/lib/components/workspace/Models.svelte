@@ -279,7 +279,7 @@
 								<div class=" font-semibold line-clamp-1">{model.name}</div>
 							</Tooltip>
 
-							<div class="flex gap-1 text-xs overflow-hidden">
+							<div class="flex gap-1 overflow-hidden">
 								<div class="line-clamp-1">
 									{#if (model?.meta?.description ?? '').trim()}
 										{model?.meta?.description}
@@ -293,7 +293,7 @@
 				</div>
 
 				<div class="flex justify-between items-center -mb-0.5 px-0.5">
-					<div class=" text-xs mt-0.5">
+					<div class=" mt-0.5">
 						<Tooltip
 							content={model?.user?.email ?? $i18n.t('Deleted User')}
 							className="flex shrink-0"
@@ -448,7 +448,7 @@
 				/>
 
 				<button
-					class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
+					class="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
 					on:click={() => {
 						modelsImportInputElement.click();
 					}}
@@ -472,7 +472,7 @@
 				</button>
 
 				<button
-					class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
+					class="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200 transition"
 					on:click={async () => {
 						downloadModels($_models);
 					}}
