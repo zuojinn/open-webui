@@ -128,20 +128,36 @@
 						<!--{/if}-->
 						{#if $user?.role === 'admin'}
 							<a
-								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/officeScene/meetingMinutes')
+								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/writeRead')
 									? 'text-active'
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
-								href="/officeScene/meetingMinutes"
+								href="/generalTools/writeRead"
 							>
-								AI会议纪要
+								AI写读
 							</a>
 							<a
-								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/officeScene/conferenceAssistant')
+								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/writing')
 									? 'text-active'
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
-								href="/officeScene/conferenceAssistant"
+								href="/generalTools/writing"
 							>
-								AI简历助手
+								AI写作
+							</a>
+							<a
+								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/drawPicture')
+									? 'text-active'
+									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+								href="/generalTools/drawPicture"
+							>
+								AI画图
+							</a>
+							<a
+								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/conferenceAssistant')
+									? 'text-active'
+									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+								href="/generalTools/conferenceAssistant"
+							>
+								AI会议助手
 							</a>
 						{/if}
 					</div>

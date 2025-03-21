@@ -6,22 +6,18 @@
 	onMount(() => {
 		if ($user?.role !== 'admin') {
 			if ($user?.permissions?.workspace?.models) {
-				goto('/officeScene/models');
+				goto('/generalTools/models');
 			} else if ($user?.permissions?.workspace?.knowledge) {
-				goto('/officeScene/knowledge');
+				goto('/generalTools/knowledge');
 			} else if ($user?.permissions?.workspace?.prompts) {
-				goto('/officeScene/prompts');
+				goto('/generalTools/prompts');
 			} else if ($user?.permissions?.workspace?.tools) {
-				goto('/officeScene/tools');
+				goto('/generalTools/tools');
 			} else {
 				goto('/');
 			}
 		} else {
-			goto('/officeScene/meetingMinutes');
+			goto('/generalTools/writeRead');
 		}
 	});
 </script>
-
-
-AI会议纪要
-HR简历助手

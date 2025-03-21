@@ -81,7 +81,7 @@
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes(
 									'/workspace/models'
 								)
-									? ''
+									? 'text-active'
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/workspace/models">{$i18n.t('Models')}</a
 							>
@@ -92,7 +92,7 @@
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes(
 									'/workspace/knowledge'
 								)
-									? ''
+									? 'text-active'
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/workspace/knowledge"
 							>
@@ -105,7 +105,7 @@
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes(
 									'/workspace/prompts'
 								)
-									? ''
+									? 'text-active'
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/workspace/prompts">{$i18n.t('Prompts')}</a
 							>
@@ -114,7 +114,7 @@
 						{#if $user?.role === 'admin' || $user?.permissions?.workspace?.tools}
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/workspace/tools')
-									? ''
+									? 'text-active'
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/workspace/tools"
 							>
@@ -133,3 +133,9 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	.text-active{
+		color: #155aef;
+	}
+</style>
