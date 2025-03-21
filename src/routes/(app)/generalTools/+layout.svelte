@@ -54,11 +54,6 @@
 		class=" relative flex flex-col w-full h-screen max-h-[100dvh] transition-width duration-200 ease-in-out {$showSidebar
 			? 'md:max-w-[calc(100%-260px)]'
 			: ''} max-w-full"
-		 style=" display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center;      /* 垂直居中 */
-  height: 100vh;            /* 父容器高度 */
-  font-size:20px;"
 	>
 		<nav class="   px-2.5 pt-1 backdrop-blur-xl drag-region">
 			<div class=" flex items-center gap-1">
@@ -130,7 +125,7 @@
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/writeRead')
 									? 'text-active'
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+									: 'text-gray-500 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/generalTools/writeRead"
 							>
 								AI写读
@@ -138,7 +133,7 @@
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/writing')
 									? 'text-active'
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+									: 'text-gray-500 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/generalTools/writing"
 							>
 								AI写作
@@ -146,7 +141,7 @@
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/drawPicture')
 									? 'text-active'
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+									: 'text-gray-500 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/generalTools/drawPicture"
 							>
 								AI画图
@@ -154,7 +149,7 @@
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/generalTools/conferenceAssistant')
 									? 'text-active'
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+									: 'text-gray-500 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/generalTools/conferenceAssistant"
 							>
 								AI会议助手

@@ -54,11 +54,6 @@
 		class=" relative flex flex-col w-full h-screen max-h-[100dvh] transition-width duration-200 ease-in-out {$showSidebar
 			? 'md:max-w-[calc(100%-260px)]'
 			: ''} max-w-full"
-		 style=" display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center;      /* 垂直居中 */
-  height: 100vh;            /* 父容器高度 */
-  font-size:20px;"
 	>
 		<nav class="   px-2.5 pt-1 backdrop-blur-xl drag-region">
 			<div class=" flex items-center gap-1">
@@ -130,7 +125,7 @@
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/officeScene/meetingMinutes')
 									? 'text-active'
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+									: 'text-gray-500 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/officeScene/meetingMinutes"
 							>
 								AI会议纪要
@@ -138,7 +133,7 @@
 							<a
 								class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/officeScene/conferenceAssistant')
 									? 'text-active'
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+									: 'text-gray-500 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								href="/officeScene/conferenceAssistant"
 							>
 								AI简历助手

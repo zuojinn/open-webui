@@ -1030,6 +1030,34 @@
 			</div>
 		</div>
 		<div class="px-2">
+			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+				<a
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
+					href=""
+					on:click={() => {
+						selectedChatId = null;
+						chatId.set('');
+
+						if ($mobile) {
+							showSidebar.set(false);
+						}
+					}}
+					draggable="false"
+				>
+					<div class="self-center">
+						<svg t="1742536539513" class="size-[1.1rem]" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M128.704 832l0-137.856c-0.128-1.216-0.64-2.24-0.64-3.52L128 545.216C128 526.72 142.4 512 160 512c17.664-0.128 30.72 22.144 30.72 40.384l0 145.472c0 2.24 0.448-3.008 0-0.896l0 71.616L768 768.576 768 619.008c0.064 0.128-0.064 0.064 0 0.128L768 545.216C768 526.72 782.656 512 800.256 512 817.92 511.872 832 526.848 832 545.152l0 145.472c0 0.448 0.064 0.832 0 1.28L832 832 128.704 832zM264.448 335.872C264.448 397.76 312.448 448 371.648 448 430.72 448 478.72 397.76 478.72 335.872 478.72 397.76 526.72 448 585.856 448c59.2 0 107.2-50.24 107.2-112.128C693.056 397.76 729.664 448 788.8 448 848 448 896 397.76 896 335.872L788.8 64 171.136 64 64 335.872C64 397.76 98.176 448 157.312 448S264.448 397.76 264.448 335.872zM896 928c0-17.664-14.336-32-32-32l-768 0C78.336 896 64 910.336 64 928l0 0C64 945.664 78.336 960 96 960l768 0C881.664 960 896 945.664 896 928L896 928z" fill="#020202" p-id="2768"></path></svg>
+					</div>
+
+					<div class="flex self-center translate-y-[0.5px]">
+						<div class=" self-center font-medium font-primary">
+							<!--{$i18n.t('Workspace')}-->
+							应用商店
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="px-2">
 			<div class="flex flex-col font-primary">
 				{#if $user !== undefined}
 					<UserMenu
