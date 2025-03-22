@@ -996,7 +996,7 @@
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
-					href=""
+					href="/applicationCenter"
 					on:click={() => {
 						selectedChatId = null;
 						chatId.set('');
@@ -1037,7 +1037,7 @@
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
-					href=""
+					href="/applicationStore"
 					on:click={() => {
 						selectedChatId = null;
 						chatId.set('');
