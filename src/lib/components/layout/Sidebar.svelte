@@ -418,6 +418,26 @@
 		dropZone?.removeEventListener('drop', onDrop);
 		dropZone?.removeEventListener('dragleave', onDragLeave);
 	});
+       // color: "linear-gradient(to bottom, #A8D8FF, #007BFF)",
+	  // color: "linear-gradient(to bottom, #C69C6D, #8B5A2B)",
+	  let sections = [
+		{
+		  title: "通用工具",
+		  color:"#ececec",
+		  items: ["AI阅读", "AI写作", "AI画图"],
+		  open: true
+		},
+		{
+		  title: "办公场景",
+		  color:"#ececec",
+		  items: ["AI会议纪要", "HR简历助手"],
+		  open: true
+		}
+	  ];
+
+  function toggleSection(index) {
+    sections[index].open = !sections[index].open;
+  }
 </script>
 
 <ArchivedChatsModal
@@ -660,7 +680,7 @@
 				</a>
 		</div>
 
-		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200" style="display:none;">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 					href="/generalTools"
@@ -687,7 +707,7 @@
 				</a>
 		</div>
 
-		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200" style="display:none;">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 					href="/officeScene"
@@ -712,7 +732,36 @@
 						</div>
 					</div>
 				</a>
+		</div>
+
+		<div class="menu">
+		  {#each sections as section, i}
+			<div class="section" style="background: {section.color};">
+			  <div class="header" on:click={() => toggleSection(i)}>
+				  {#if i=== 0}
+					  <div class="self-center">
+							<svg t="1742457529719"  stroke="currentColor"  stroke-width="2" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" class="size-[1.1rem]"><path d="M227.328 139.5712a149.3504 149.3504 0 0 1 190.8736 190.8736l462.6944 462.7456-90.5216 90.5216L327.68 421.0176a149.3504 149.3504 0 0 1-190.8224-190.9248l95.4368 95.4368a64 64 0 0 0 90.5216-90.4704L227.3792 139.5712z m442.368 80.384l135.7824-75.4176L865.8432 204.8l-75.4688 135.7824-75.4176 15.104-90.5216 90.4704-60.3136-60.3136 90.5216-90.5216 15.0528-75.4176z m-301.6704 331.8784l90.5216 90.5216L247.296 853.504a64 64 0 0 1-94.6688-85.9136l4.1472-4.608 211.2-211.1488z"></path></svg>
+					  </div>
+				  {/if}
+				  {#if i=== 1}
+					  <div class="self-center">
+							<svg t="1742457529719"  stroke="currentColor"  stroke-width="2" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" class="size-[1.1rem]"><path d="M85.333333 128a42.666667 42.666667 0 0 1 42.666667-42.666667h469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v298.666667a42.666667 42.666667 0 0 1-42.666667 42.666666H128a42.666667 42.666667 0 0 1-42.666667-42.666666V128z m85.333334 42.666667v213.333333h384V170.666667H170.666667zM42.666667 576a42.666667 42.666667 0 0 1 42.666666-42.666667h853.333334a42.666667 42.666667 0 0 1 42.666666 42.666667v341.333333a42.666667 42.666667 0 0 1-42.666666 42.666667H682.666667a42.666667 42.666667 0 0 1-42.666667-42.666667v-133.333333H298.666667V917.333333a42.666667 42.666667 0 0 1-42.666667 42.666667H85.333333a42.666667 42.666667 0 0 1-42.666666-42.666667V576z m85.333333 42.666667v256h85.333333v-133.333334a42.666667 42.666667 0 0 1 42.666667-42.666666h426.666667a42.666667 42.666667 0 0 1 42.666666 42.666666V874.666667h170.666667V618.666667H128z" fill="#000000" p-id="6132"></path><path d="M362.666667 416a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 1 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667zM682.666667 448a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 1 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667zM810.666667 384a42.666667 42.666667 0 0 1 42.666666 42.666667v149.333333a42.666667 42.666667 0 1 1-85.333333 0v-149.333333a42.666667 42.666667 0 0 1 42.666667-42.666667zM938.666667 298.666667a42.666667 42.666667 0 0 1 42.666666 42.666666v234.666667a42.666667 42.666667 0 1 1-85.333333 0V341.333333a42.666667 42.666667 0 0 1 42.666667-42.666666z"></path></svg>
+					  </div>
+				  {/if}
+				  {section.title}
+			  </div>
+			  {#if section.open}
+				<div class="items">
+				  {#each section.items as item}
+					<div class="item">{item}</div>
+				  {/each}
+				</div>
+			  {/if}
 			</div>
+		  {/each}
+		</div>
+
+
 
 		<div class="relative {$temporaryChatEnabled ? 'opacity-20' : ''}">
 			{#if $temporaryChatEnabled}
@@ -1103,4 +1152,36 @@
 	.scrollbar-hidden::-webkit-scrollbar-thumb {
 		visibility: hidden;
 	}
+
+	.menu {
+        width: 240px;
+		margin-left: 7px;
+		font-family: Arial, sans-serif;
+		margin-top: 4px;
+	  }
+  .section {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .header {
+	display: flex;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+	color:#000;
+  }
+  .header .self-center{
+	  padding-right:10px;
+  }
+  .items {
+    padding: 10px 10px 10px 36px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+  }
+  .item {
+    padding: 7px 0;
+    color: black;
+  }
 </style>
