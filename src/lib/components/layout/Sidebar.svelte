@@ -423,15 +423,15 @@
 	  let sections = [
 		{
 		  title: "通用工具",
-		  color:"#ececec",
+		  color: "linear-gradient(to bottom, rgb(191 221 255), rgb(20 131 253))",
 		  items: ["AI阅读", "AI写作", "AI画图"],
-		  open: true
+		  open: false
 		},
 		{
 		  title: "办公场景",
-		  color:"#ececec",
+		  color: "linear-gradient(to bottom, rgb(205 142 101), rgb(139, 90, 43))",
 		  items: ["AI会议纪要", "HR简历助手"],
-		  open: true
+		  open: false
 		}
 	  ];
 
@@ -625,8 +625,9 @@
 
 		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
-					href=""
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+					style="background: linear-gradient(to bottom, rgb(238 231 190), rgb(249 209 48))"
+					href="/workspace/knowledge"
 					on:click={() => {
 						selectedChatId = null;
 						chatId.set('');
@@ -653,6 +654,7 @@
 		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+					style="background: linear-gradient(to bottom, rgb(188 227 233), rgb(92 188 194));margin: 10px 0 6px;"
 					href="/"
 					draggable="false"
 					on:click={async () => {
@@ -751,7 +753,7 @@
 				  {section.title}
 			  </div>
 			  {#if section.open}
-				<div class="items">
+				<div class="items" style="background:{section.background};">
 				  {#each section.items as item}
 					<div class="item">{item}</div>
 				  {/each}
@@ -1045,6 +1047,7 @@
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
+					style="background: linear-gradient(to bottom, rgb(217 211 241), rgb(163 142 253));margin-bottom: 10px;"
 					href="/applicationCenter"
 					on:click={() => {
 						selectedChatId = null;
@@ -1086,6 +1089,7 @@
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
 					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
+					style="background: linear-gradient(to bottom, rgb(217 211 241), rgb(163 142 253))"
 					href="/applicationStore"
 					on:click={() => {
 						selectedChatId = null;
@@ -1154,7 +1158,7 @@
 	}
 
 	.menu {
-        width: 240px;
+        width: 246px;
 		margin-left: 7px;
 		font-family: Arial, sans-serif;
 		margin-top: 4px;
@@ -1166,17 +1170,14 @@
   }
   .header {
 	display: flex;
-    padding: 10px;
-    font-weight: bold;
+    padding: 7px 10px;
     cursor: pointer;
-	color:#000;
   }
   .header .self-center{
 	  padding-right:10px;
   }
   .items {
-    padding: 10px 10px 10px 36px;
-    background: white;
+    padding: 0 10px 10px 36px;
     display: flex;
     flex-direction: column;
   }
