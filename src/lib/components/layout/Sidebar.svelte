@@ -527,7 +527,8 @@
 						/>
 					</div>
 					<div class=" self-center font-medium text-gray-850 dark:text-white font-primary">
-						{$i18n.t('New Chat')}
+						<!--{$i18n.t('New Chat')}-->
+						AI对话
 					</div>
 				</div>
 
