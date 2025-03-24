@@ -181,7 +181,7 @@
 					<img
 						id="logo"
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/splash.png"
+						src="/static/splash.png"
 						class=" w-6 rounded-full"
 						alt="logo"
 					/>
@@ -218,15 +218,16 @@
 						>
 							<div class="mb-1">
 								<div class=" text-2xl font-medium">
-									{#if $config?.onboarding ?? false}
-										{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-									{:else if mode === 'ldap'}
-										{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: $WEBUI_NAME })}
-									{:else if mode === 'signin'}
-										{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-									{:else}
-										{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-									{/if}
+									<!--{#if $config?.onboarding ?? false}-->
+									<!--	{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}-->
+									<!--{:else if mode === 'ldap'}-->
+									<!--	{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: $WEBUI_NAME })}-->
+									<!--{:else if mode === 'signin'}-->
+									<!--	{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}-->
+									<!--{:else}-->
+									<!--	{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}-->
+									<!--{/if}-->
+									登录
 								</div>
 
 								{#if $config?.onboarding ?? false}
