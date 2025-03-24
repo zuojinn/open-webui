@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { toast } from 'svelte-sonner';
 	import { v4 as uuidv4 } from 'uuid';
-	import { page } from '$app/stores';
+
 	import { goto } from '$app/navigation';
 	import {
 		user,
@@ -482,70 +482,81 @@
 <div
 	bind:this={navElement}
 	id="sidebar"
+	class="h-screen max-h-[100dvh] min-h-screen select-none {$showSidebar
+		? 'md:relative w-[260px] max-w-[260px]'
+		: '-translate-x-[260px] w-[0px]'} {$isApp
+		? `ml-[4.5rem] md:ml-0 `
+		: 'transition-width duration-200 ease-in-out'}  shrink-0 bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-200 fixed z-50 top-0 left-0 overflow-x-hidden
+        "
 	data-state={$showSidebar}
 >
 	<div
-		class="py-2 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[82px] overflow-x-hidden z-50 {$showSidebar
+		class="py-2 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
 			? ''
 			: 'invisible'}"
 	>
 		<div class="px-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
+			<button
+				class=" cursor-pointer p-[7px] flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+				on:click={() => {
+					showSidebar.set(!$showSidebar);
+				}}
+			>
+				<div class=" m-auto self-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="2"
+						stroke="currentColor"
+						class="size-5"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+						/>
+					</svg>
+				</div>
+			</button>
+
 			<a
 				id="sidebar-new-chat-button"
-				class="flex justify-between items-center flex-1 rounded-lg px-2 py-1 h-full text-right  transition no-drag-region"
+				class="flex justify-between items-center flex-1 rounded-lg px-2 py-1 h-full text-right hover:bg-gray-100 dark:hover:bg-gray-900 transition no-drag-region"
 				href="/"
 				draggable="false"
+				on:click={async () => {
+					selectedChatId = null;
+					await goto('/');
+					const newChatButton = document.getElementById('new-chat-button');
+					setTimeout(() => {
+						newChatButton?.click();
+						if ($mobile) {
+							showSidebar.set(false);
+						}
+					}, 0);
+				}}
 			>
 				<div class="flex items-center">
 					<div class="self-center mx-1.5">
 						<img
 							crossorigin="anonymous"
 							src="/static/favicon.png"
-							class="rounded-full"
+							class=" size-5 -translate-x-1.5 rounded-full"
 							alt="logo"
 						/>
 					</div>
+					<div class=" self-center font-medium text-gray-850 dark:text-white font-primary">
+						<!--{$i18n.t('New Chat')}-->
+						AI对话
+					</div>
+				</div>
+
+				<div>
+					<PencilSquare className=" size-5" strokeWidth="2" />
 				</div>
 			</a>
 		</div>
-
-<!--			<a-->
-<!--				id="sidebar-new-chat-button"-->
-<!--				class="flex justify-between items-center flex-1 rounded-lg px-2 py-1 h-full text-right hover:bg-gray-100 dark:hover:bg-gray-900 transition no-drag-region"-->
-<!--				href="/"-->
-<!--				draggable="false"-->
-<!--				on:click={async () => {-->
-<!--					selectedChatId = null;-->
-<!--					await goto('/');-->
-<!--					const newChatButton = document.getElementById('new-chat-button');-->
-<!--					setTimeout(() => {-->
-<!--						newChatButton?.click();-->
-<!--						if ($mobile) {-->
-<!--							showSidebar.set(false);-->
-<!--						}-->
-<!--					}, 0);-->
-<!--				}}-->
-<!--			>-->
-<!--				<div class="flex items-center">-->
-<!--					<div class="self-center mx-1.5">-->
-<!--						<img-->
-<!--							crossorigin="anonymous"-->
-<!--							src="/static/favicon.png"-->
-<!--							class=" size-5 -translate-x-1.5 rounded-full"-->
-<!--							alt="logo"-->
-<!--						/>-->
-<!--					</div>-->
-<!--					<div class=" self-center font-medium text-gray-850 dark:text-white font-primary">-->
-<!--						&lt;!&ndash;{$i18n.t('New Chat')}&ndash;&gt;-->
-<!--						AI对话-->
-<!--					</div>-->
-<!--				</div>-->
-
-<!--				<div>-->
-<!--					<PencilSquare className=" size-5" strokeWidth="2" />-->
-<!--				</div>-->
-<!--			</a>-->
-<!--		</div>-->
 
 		<!-- {#if $user?.role === 'admin'}
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
@@ -573,38 +584,10 @@
 			</div>
 		{/if} -->
 
-	<div class="content-b">
-		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
-				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
-					href="/"
-					on:click={() => {
-						selectedChatId = null;
-						chatId.set('');
-
-						if ($mobile) {
-							showSidebar.set(false);
-						}
-					}}
-					draggable="false"
-				>
-					<div class="self-center">
-						<svg t="1742802565562" class="icon" viewBox="0 0 1137 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2882"><path d="M86.755507 0.000569A77.255068 77.255068 0 0 0 9.44355 77.255637v541.013033a77.255068 77.255068 0 0 0 77.311957 77.255068h77.255069v56.604413a59.278189 59.278189 0 0 0 92.216837 49.379528l158.947467-105.983941h289.791839a77.255068 77.255068 0 0 0 77.311958-77.255068v-541.013033A77.255068 77.255068 0 0 0 704.966719 0.000569H86.755507z m911.928383 220.273655c54.044414 0 92.728837 38.627534 92.728837 92.728838v502.328609c0 54.101303-38.684423 92.728837-92.728837 92.728838h-100.465722v69.575072a42.495976 42.495976 0 0 1-23.210654 38.684423c-7.96444 3.868442-15.473769 7.679996-23.153765 7.679996-7.736885 0-15.473769 0-23.210654-7.736885l-162.30391-115.939491H527.245929c-54.101303 0-92.728837-38.627534-92.728837-92.728837V745.813488h285.923397c61.838188 0 115.939491-54.044414 115.939491-115.882602v-409.599773h162.30391zM165.944797 488.789631l100.465722-290.360728c10.296883-27.87554 27.704873-42.495976 52.167082-43.861309 24.462209 0 42.495976 14.620436 54.044414 43.80442L469.333073 488.84652c2.616887 8.305773 3.868442 15.303103 3.868442 20.87821-1.251555 20.821322-12.856882 31.288872-34.759092 31.288872-18.090657 0-30.264872-8.305773-36.750202-25.031098l-13.482659-50.119083H250.879861l-15.416881 50.062195c-6.48533 16.782213-18.659545 25.087986-36.750202 25.087986-21.90221 0-33.507537-11.093327-34.759091-33.39376 0-4.152887 0.682666-9.102217 1.934221-14.620436v-4.152886zM318.577601 238.137325l-46.364419 154.510137h92.728837L318.577601 238.137325z m193.194559 265.102075v-306.63094c1.365333-26.623985 14.222214-40.618644 38.684423-42.040866 24.40532 1.365333 37.262202 15.41688 38.627534 41.983977v306.630941c-1.365333 25.201764-14.222214 37.774201-38.684423 37.774201-24.40532 0-37.262202-12.572437-38.627534-37.774201z"></path></svg>
-					</div>
-
-					<div class="flex self-center translate-y-[0.5px]">
-						<div class=" self-center font-medium font-primary">
-							<!--{$i18n.t('Workspace')}-->
-							AI对话
-						</div>
-					</div>
-				</a>
-		</div>
-
 		{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models || $user?.permissions?.workspace?.knowledge || $user?.permissions?.workspace?.prompts || $user?.permissions?.workspace?.tools}
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 					href="/workspace"
 					on:click={() => {
 						selectedChatId = null;
@@ -616,15 +599,6 @@
 					}}
 					draggable="false"
 				>
-					<div class="{$page.url.pathname.includes(
-									'/workspace/models'
-								) || $page.url.pathname.includes(
-									'/workspace/prompts'
-								) || $page.url.pathname.includes(
-									'/workspace/tools'
-								)
-									? 'YmUSM'
-									: ''} "></div>
 					<div class="self-center">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -651,7 +625,8 @@
 
 		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+					style="background: linear-gradient(to bottom, rgb(238 231 190), rgb(249 209 48))"
 					href="/workspace/knowledge"
 					on:click={() => {
 						selectedChatId = null;
@@ -663,11 +638,6 @@
 					}}
 					draggable="false"
 				>
-					<div class="{$page.url.pathname.includes(
-									'/workspace/knowledge'
-								)
-									? 'YmUSM'
-									: ''} "></div>
 					<div class="self-center">
 						<svg t="1742457529719"  stroke="currentColor"  stroke-width="2" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" class="size-[1.1rem]"><path d="M554.666667 221.866667h-174.250667v580.266666H716.8a85.333333 85.333333 0 0 0 85.333333-85.333333V307.2c0-38.229333-25.122133-70.5536-59.733333-81.442133V409.6a25.6 25.6 0 0 1-43.690667 18.090667L648.533333 377.514667l-50.176 50.176a25.6 25.6 0 0 1-43.690666-18.090667V221.866667z m-225.450667 0H307.2A85.333333 85.333333 0 0 0 221.866667 307.2v409.6A85.333333 85.333333 0 0 0 307.2 802.133333h22.016v-580.266666zM307.2 170.666667h409.6a136.533333 136.533333 0 0 1 136.533333 136.533333v409.6a136.533333 136.533333 0 0 1-136.533333 136.533333H307.2a136.533333 136.533333 0 0 1-136.533333-136.533333V307.2a136.533333 136.533333 0 0 1 136.533333-136.533333z m298.666667 59.733333v117.418667l24.576-24.576a25.6 25.6 0 0 1 36.181333 0l24.576 24.576V230.4h-85.333333z"></path></svg>
 					</div>
@@ -683,7 +653,8 @@
 
 		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+					style="background: linear-gradient(to bottom, rgb(188 227 233), rgb(92 188 194));margin: 10px 0 6px;"
 					href="/"
 					draggable="false"
 					on:click={async () => {
@@ -713,7 +684,7 @@
 
 		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200" style="display:none;">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 					href="/generalTools"
 					on:click={() => {
 						selectedChatId = null;
@@ -740,7 +711,7 @@
 
 		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200" style="display:none;">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 					href="/officeScene"
 					on:click={() => {
 						selectedChatId = null;
@@ -765,7 +736,7 @@
 				</a>
 		</div>
 
-		<div class="menu" style="display:none;">
+		<div class="menu">
 		  {#each sections as section, i}
 			<div class="section" style="background: {section.color};">
 			  <div class="header" on:click={() => toggleSection(i)}>
@@ -794,7 +765,7 @@
 
 
 
-		<div class="relative {$temporaryChatEnabled ? 'opacity-20' : ''}" style="display:none;">
+		<div class="relative {$temporaryChatEnabled ? 'opacity-20' : ''}">
 			{#if $temporaryChatEnabled}
 				<div class="absolute z-40 w-full h-full flex justify-center"></div>
 			{/if}
@@ -810,7 +781,6 @@
 			class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden {$temporaryChatEnabled
 				? 'opacity-20'
 				: ''}"
-			style="display:none;"
 		>
 			{#if $config?.features?.enable_channels && ($user.role === 'admin' || $channels.length > 0) && !search}
 				<Folder
@@ -1073,9 +1043,11 @@
 				</div>
 			</Folder>
 		</div>
-		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+		<div class="px-2">
+			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
+					style="background: linear-gradient(to bottom, rgb(217 211 241), rgb(163 142 253));margin-bottom: 10px;"
 					href="/applicationCenter"
 					on:click={() => {
 						selectedChatId = null;
@@ -1087,11 +1059,6 @@
 					}}
 					draggable="false"
 				>
-					<div class="{$page.url.pathname.includes(
-									'/applicationCenter'
-								)
-									? 'YmUSM'
-									: ''} "></div>
 					<div class="self-center">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -1116,10 +1083,13 @@
 						</div>
 					</div>
 				</a>
+			</div>
 		</div>
-		<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+		<div class="px-2">
+			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition content-box"
+					class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] transition"
+					style="background: linear-gradient(to bottom, rgb(217 211 241), rgb(163 142 253))"
 					href="/applicationStore"
 					on:click={() => {
 						selectedChatId = null;
@@ -1131,13 +1101,8 @@
 					}}
 					draggable="false"
 				>
-					<div class="{$page.url.pathname.includes(
-									'/applicationStore'
-								)
-									? 'YmUSM'
-									: ''} "></div>
 					<div class="self-center">
-						<svg t="1742536539513" class="size-[1.1rem]" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M128.704 832l0-137.856c-0.128-1.216-0.64-2.24-0.64-3.52L128 545.216C128 526.72 142.4 512 160 512c17.664-0.128 30.72 22.144 30.72 40.384l0 145.472c0 2.24 0.448-3.008 0-0.896l0 71.616L768 768.576 768 619.008c0.064 0.128-0.064 0.064 0 0.128L768 545.216C768 526.72 782.656 512 800.256 512 817.92 511.872 832 526.848 832 545.152l0 145.472c0 0.448 0.064 0.832 0 1.28L832 832 128.704 832zM264.448 335.872C264.448 397.76 312.448 448 371.648 448 430.72 448 478.72 397.76 478.72 335.872 478.72 397.76 526.72 448 585.856 448c59.2 0 107.2-50.24 107.2-112.128C693.056 397.76 729.664 448 788.8 448 848 448 896 397.76 896 335.872L788.8 64 171.136 64 64 335.872C64 397.76 98.176 448 157.312 448S264.448 397.76 264.448 335.872zM896 928c0-17.664-14.336-32-32-32l-768 0C78.336 896 64 910.336 64 928l0 0C64 945.664 78.336 960 96 960l768 0C881.664 960 896 945.664 896 928L896 928z"  p-id="2768"></path></svg>
+						<svg t="1742536539513" class="size-[1.1rem]" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M128.704 832l0-137.856c-0.128-1.216-0.64-2.24-0.64-3.52L128 545.216C128 526.72 142.4 512 160 512c17.664-0.128 30.72 22.144 30.72 40.384l0 145.472c0 2.24 0.448-3.008 0-0.896l0 71.616L768 768.576 768 619.008c0.064 0.128-0.064 0.064 0 0.128L768 545.216C768 526.72 782.656 512 800.256 512 817.92 511.872 832 526.848 832 545.152l0 145.472c0 0.448 0.064 0.832 0 1.28L832 832 128.704 832zM264.448 335.872C264.448 397.76 312.448 448 371.648 448 430.72 448 478.72 397.76 478.72 335.872 478.72 397.76 526.72 448 585.856 448c59.2 0 107.2-50.24 107.2-112.128C693.056 397.76 729.664 448 788.8 448 848 448 896 397.76 896 335.872L788.8 64 171.136 64 64 335.872C64 397.76 98.176 448 157.312 448S264.448 397.76 264.448 335.872zM896 928c0-17.664-14.336-32-32-32l-768 0C78.336 896 64 910.336 64 928l0 0C64 945.664 78.336 960 96 960l768 0C881.664 960 896 945.664 896 928L896 928z" fill="#020202" p-id="2768"></path></svg>
 					</div>
 
 					<div class="flex self-center translate-y-[0.5px]">
@@ -1147,7 +1112,7 @@
 						</div>
 					</div>
 				</a>
-		</div>
+			</div>
 		</div>
 		<div class="px-2">
 			<div class="flex flex-col font-primary">
@@ -1162,12 +1127,11 @@
 					>
 						<button
 							class=" flex items-center rounded-xl py-2.5 px-2.5 w-full hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-							style="flex-flow: column;"
 							on:click={() => {
 								showDropdown = !showDropdown;
 							}}
 						>
-							<div class=" self-center">
+							<div class=" self-center mr-3">
 								<img
 									src={$user.profile_image_url}
 									class=" max-w-[30px] object-cover rounded-full"
@@ -1221,47 +1185,4 @@
     padding: 7px 0;
     color: black;
   }
-  .content-b{
-	  flex:1;
-	  margin-top:28px;
-  }
-  .content-box{
-	  position: relative;
-	  flex-flow: column;
-      color: rgb(224, 223, 255);
-	  font-size: 12px;
-	  margin-bottom: 28px;
-  }
-  /*.content-box:first-child{*/
-	/*  margin-top: 28px;*/
-  /*}*/
-  .content-box svg{
-	  margin-bottom:10px;
-	  color: rgb(198, 196, 255);
-	  fill: rgb(198, 196, 255);
-	  font-size: 28px;
-	  width: 28px;
-	  height: 28px;
-  }
- .content-box:hover{
-	  background: transparent;
-	  color: #fff;
-  }
-  .content-box:hover svg{
-	  color: #fff;
-	  fill: #fff;
-  }
-  .content-box .self-center{
-	  margin-right: 0;
-  }
-.content-box .YmUSM {
-    animation: 0.3s ease-in-out 0s 1 normal none running scaleUp;
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 48px;
-    height: 48px;
-    position: absolute;
-	top: -4px;
-    left: 11px;
-    border-radius: 50%;
-}
 </style>

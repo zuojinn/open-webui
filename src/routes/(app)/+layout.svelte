@@ -240,9 +240,10 @@
 	</div>
 {/if}
 
-<div class="app relative">
+<div class="app relative dHoxYx">
+	<div class="hYmrzv"></div>
 	<div
-		class=" text-gray-700 dark:text-gray-100 bg-white dark:bg-gray-900 h-screen max-h-[100dvh] overflow-auto flex flex-row justify-end"
+		class=" text-gray-700 dark:text-gray-100 dark:bg-gray-900 h-screen max-h-[100dvh] overflow-auto flex flex-row justify-end"
 	>
 		{#if loaded}
 			{#if !['user', 'admin'].includes($user.role)}
@@ -300,9 +301,10 @@
 					</div>
 				</div>
 			{/if}
-
 			<Sidebar />
-			<slot />
+			<div class="content-box h-screen max-h-[calc(100%-16px)] transition-width duration-200 ease-in-out  bg-white  md:max-w-[calc(100%-72px)] w-full max-w-full flex flex-col">
+				<slot />
+			</div>
 		{/if}
 	</div>
 </div>
@@ -348,5 +350,47 @@
 	pre[class*='language-'] button:hover {
 		cursor: pointer;
 		background-color: #bcbabb;
+	}
+	.dHoxYx{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	.dHoxYx .hYmrzv{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+	.dHoxYx .hYmrzv::before {
+		content: "";
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 720px;
+		height: 100%;
+		background-image: url(https://img.alicdn.com/imgextra/i3/O1CN010aKVQw1zmImwHGd1u_!!6000000006756-0-tps-720-840.jpg), linear-gradient(105deg, rgb(97, 92, 237) 7%, rgb(213, 220, 255) 66%);
+		background-position: left center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		z-index: -1;
+	}
+	.dHoxYx .hYmrzv::after {
+		content: "";
+		position: absolute;
+		top: 0px;
+		left: 720px;
+		height: 100%;
+		width: calc(100% - 720px);
+		background: rgb(213, 220, 255);
+		z-index: -1;
+	}
+	.dHoxYx .content-box{
+		background-color: rgb(246, 247, 251);
+		background: linear-gradient(180deg, #eeedfd, #fff 25%, #fff 60%);
+		margin: 8px 8px 8px 0;
+		border-radius: 12px;
 	}
 </style>

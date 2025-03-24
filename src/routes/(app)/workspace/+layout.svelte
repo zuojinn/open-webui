@@ -52,10 +52,10 @@
 {#if loaded}
 	<div
 		class=" relative flex flex-col w-full h-screen max-h-[100dvh] transition-width duration-200 ease-in-out {$showSidebar
-			? 'md:max-w-[calc(100%-260px)]'
+			? 'md:max-w-[calc(100%)]'
 			: ''} max-w-full"
 	>
-		<nav class="   px-2.5 pt-1 backdrop-blur-xl drag-region">
+		<nav class="border-radius-top-left-12 border-radius-top-right-12 px-2.5 pt-1 backdrop-blur-xl drag-region">
 			<div class=" flex items-center gap-1">
 				<div class="{$showSidebar ? 'md:hidden' : ''} self-center flex flex-none items-center">
 					<button
@@ -137,5 +137,11 @@
 <style>
 	.text-active{
 		color: #155aef;
+	}
+	.border-radius-top-left-12{
+		border-top-left-radius: 12px;
+	}
+	.border-radius-top-right-12{
+		border-top-right-radius: 12px;
 	}
 </style>

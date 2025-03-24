@@ -85,6 +85,7 @@
 	import Placeholder from './Placeholder.svelte';
 	import NotificationToast from '../NotificationToast.svelte';
 	import Spinner from '../common/Spinner.svelte';
+	import SideBarChat from "$lib/components/layout/SideBarChat.svelte";
 
 	export let chatIdProp = '';
 
@@ -1905,7 +1906,8 @@
 		eventCallback(false);
 	}}
 />
-
+<div style="display:flex;">
+<SideBarChat/>
 <div
 	class="h-screen max-h-[100dvh] transition-width duration-200 ease-in-out {$showSidebar
 		? '  md:max-w-[calc(100%-260px)]'
@@ -2150,4 +2152,5 @@
 			</div>
 		</div>
 	{/if}
+</div>
 </div>
